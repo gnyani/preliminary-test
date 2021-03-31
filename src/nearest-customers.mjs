@@ -15,7 +15,7 @@ const EARTH_RADIUS = 6371e3; // in meters
 
 const MAX_RADIUS = 100 * 1000; // 100km in meters
 
-const loadCustomerDataAndSort = () => {
+const loadCustomersDataAndSort = () => {
   const rawCustomerData = fs.readFileSync('./resources/customers.txt').toString().split("\n");
   const customerList = rawCustomerData.map(cutomer => JSON.parse(cutomer));
   return customerList.sort((customerA, customerB) => customerA.user_id - customerB.user_id);
@@ -41,7 +41,7 @@ const checkCustomerOfficeWithInRadius = (customer) => {
 };
 
 export const nearestCustomers = () => {
-  const sortedCustomers = loadCustomerDataAndSort();
+  const sortedCustomers = loadCustomersDataAndSort();
   const invitableCustomers = sortedCustomers.filter(customer => checkCustomerOfficeWithInRadius(customer)).map((customer) => ({user_id: customer.user_id, name: customer.name}));
   console.log('List of invitable partners is', invitableCustomers);
 };
