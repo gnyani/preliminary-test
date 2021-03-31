@@ -11,4 +11,6 @@
 - `yarn install`
 - `yarn test`
 
+## NOTE: sample output of the program is present at resources/output.txt
+
 
